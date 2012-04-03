@@ -1,0 +1,44 @@
+<hmtl>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<style type="text/css">
+	td, th {border : 1px solid #ccc};
+	th {background: #ccc};
+</style> 
+
+	</head>
+	<body>
+		<table id="tbl" style="border:1px solid #ccc;">
+
+		</table>
+
+		<script type="text/javascript"> 
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+$(document).ready(function(){
+	var param = getURLParameter("kundenr"); 
+	var url = "http://localhost:8080/bierfejl/customer/" + param+ "/json";
+	$.get(url, function(d){
+		$.each(d, function(h, i){
+			$.each(i, function(j,k){
+				$("#tbl").append("<th>" + j + "</th>")
+			}); 
+			return false;
+		});
+		$.each(d, function(e,x){ 
+			$("#tbl").append("<tr id='r" + e + "'></tr>");
+			$.each(x, function(y,z){
+				$("#r"+e).append("<td>" + z + "</td>");
+
+			} )
+
+		});
+	});
+});
+		</script>
+	</body>
+
+</html> 
