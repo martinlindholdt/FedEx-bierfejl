@@ -14,11 +14,6 @@
     :user "username"
     :password "password"})
 
-; (sql/with-connection mysql-db
-;     (sql/insert-records :fruit
-;         {:name "Apple" :appearance "rosy" :cost 24}
-;         {:name "Orange" :appearance "round" :cost 49}))
-
 ;(def dates (:tid_afsluttet :tid_oprettet))
 (def fields '(:status :anlaegsnummer :prioritet :person :kundenr :fejlkode :hf_nummer))
 
